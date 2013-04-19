@@ -1,0 +1,7 @@
+  <ol ng-controller="UserListCtrl">
+  <div ng-repeat="user in users">
+    <a href="#/users/{{user.username}}" class="thumb"><li>
+      <h3>{{ user.username }}</h3>
+    </li></a>
+</div>
+  </ol>

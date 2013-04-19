@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" ng-app='convictions'>
+<head>
+  <meta charset="utf-8">
+  <title>Convictions</title>
+  <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+  <script src="css/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="LoginCornerCtrl">
+  <div class="navbar-inner" ng-switch="loggedIn">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target="nav-collapse">
+      <span class="icon-bar">Test</span>
+      <span class="icon-bar">Hetyy</span>
+      <span class="icon-bar">yySASSS</span>
+    </a>
+
+    <div clas="nav-collapse nav collapse">
+      <ul class="nav">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li class="dropdown">
+          <a data-toggle="dropdown">Groups <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li>
+              <a href="#" style="color:#DDD">USA</a>
+            </li><li>
+              <a href="#" style="color:#DDD">California</a>
+            </li><li>
+              <a href="#" style="color:#DDD">Internet User</a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">New Group</a>
+        </li>
+
+       <!-- Logged in: -->
+        <li>
+          <div ng-switch-when="true" style="color:#DDD;margin:13px" class="pull-right">
+           Logged in as <a href="{{userLink}}">{{username}}</a> | <a href="http://localhost:3010/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- Not logged in: -->
+    <div ng-switch-when="false" style="float:right;margin-right:5px">
+      <a href="#loginModal" role="button" class="btn btn-warning btn-small" data-toggle="modal" style="color:#333">
+          <i class="icon-user"></i> Log In
+      </a>
+      <a href="#registerModal" class="btn btn-small" data-toggle="modal" style="color:#333"><i class="icon-pencil"></i> Register</a>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Log in Modal Screen -->
+<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="loginModalLabel">Log In</h3>
+  </div>
+  <div class="modal-body">
+    <p>Log In</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>
+
+<!-- Register Modal Screen -->
+<div id="registerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true" ng-controller="RegisterCtrl">
+  <form id="registerForm" action="http://localhost:3010/users" method="post">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="registerModalLabel">Register</h3>
+    </div>
+    <div class="modal-body">
+      <input type="text" placeholder="Username" id="registerUsername" ng-model="user.username"><br>
+      <input type="email" placeholder="Email" id="registerEmail" autocomplete="true" name="email" ng-model="user.email"><br>
+      <input type="password" placeholder="Password" id="registerPassword" name="password" ng-model="user.password"><br>
+      <input type="password" placeholder="Repeat Password" id="registerRepeatPassword"  ng-model="user.confirm"><span ng-mode="error.repeat"></span>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      <button class="btn btn-primary btn-warning" style="color:black" ng-click="register(user)">Register</button>
+    </div>
+  </form>
+</div>
+
+<menu class="row">
+
+<img src="./img/logo.png" class="span5">
+
+</menu>
+
+  <div ng-view></div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+  -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="css/bootstrap/js/bootstrap.js"></script>
+</div>
+</body>
+</html>

@@ -8,6 +8,9 @@
   "dependencies": {
     "express": "3.0.0",
     "jade": "*",
-    "mongodb": "~1.2.14"
+    "mongodb": "~1.2.14",
+    "levelup": "~0.6.2",
+    "passport": "~0.1.16",
+    "easy-pbkdf2": "0.0.2"
   }
 }
